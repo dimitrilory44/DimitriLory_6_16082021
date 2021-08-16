@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon server"
+    "dev": "env-cmd -f ./env/.env.dev node app.js",
+    "serve-dev": "npm run dev && nodemon server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.13.7"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
   }
 }
