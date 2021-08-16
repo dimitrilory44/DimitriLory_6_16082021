@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
 
+require('dotenv').config({path: process.cwd() + '/env/.env.dev'});
+
 // Connection à la base de données MongoDB
 mongoose.connect(`${process.env.MONGO_URL}`,
 { useNewUrlParser: true,
