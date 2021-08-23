@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const helmet = require('helmet');
 
 const path = require('path');
 
@@ -18,6 +19,9 @@ mongoose.connect(`${process.env.MONGO_URL}`,
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
+
+// Protection des cookies et injection de script
+app.use(helmet());
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*'),
