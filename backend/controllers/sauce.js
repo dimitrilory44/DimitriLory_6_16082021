@@ -77,7 +77,6 @@ exports.likedOrNot = (req, res, next) => {
     } else {
         Sauce.findOne({ _id: req.params.id })
         .then(sauce => {
-            console.log(sauce.usersLiked, req.body.userId, sauce.usersDisliked);
             if(sauce.usersLiked.includes(req.body.userId)) {
                 Sauce.updateOne(
                     { _id: req.params.id },
