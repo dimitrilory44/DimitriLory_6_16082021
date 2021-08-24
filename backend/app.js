@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const helmet = require('helmet');
+const winston = require('./middleware/create_log');
+const morgan = require('morgan');
 
 const path = require('path');
 
@@ -22,6 +24,9 @@ const app = express();
 
 // Protection des cookies et injection de script
 app.use(helmet());
+
+// ous utilisons morgan pour enregistrer notre transformation express
+app.use(morgan('combined', { stream: winston.stream }));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*'),
